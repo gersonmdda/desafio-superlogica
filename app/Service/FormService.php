@@ -111,7 +111,9 @@ class FormService
         }
     }
     
-   
+   /**
+    * @param array $data é o valores vindos do form de da tela de busc de usuários
+    */
     public function list(array $data): array
     {
         if($data){
