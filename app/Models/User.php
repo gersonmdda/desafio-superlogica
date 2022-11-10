@@ -46,10 +46,13 @@ class User extends Authenticatable
     
     public static function getTableName(): String
     {
+        //retorna o nome da tabela a que está modelo representa
         return (new self())->getTable();
     }
 
-
+    /**
+    * @param array data é um array com os dados do form já tratados para serem persistidos no banco de dados
+    */
     public static function mountInformation(?array $data = null): array
     {
         $fields = implode(',',$data);
@@ -74,6 +77,7 @@ class User extends Authenticatable
                 }
             }
         }
+        //retorna um array com os campos, condições e binds para criar a query de busca
         return [
             'fields' => $fields,
             'conditions' => $conditions ?? null,

@@ -17,6 +17,9 @@ class FormService
 
     private FormRepository $formRepository;
 
+    /**
+    * @param FormRepository formRepository objeto da classe que dará acesso as operações com banco de dados
+    */
     function __construct(FormRepository $formRepository) 
     {
         $this->formRepository = $formRepository;
@@ -24,6 +27,7 @@ class FormService
 
     public function getFormValidations(): array
     {
+        //retorna o array necessário para as validações que devem ser feitas, referentes ao formulário
         return [
             'name'     => 'required|max:255',
             'userName' => 'required|unique:App\Models\User,user_name|max:255',
@@ -46,6 +50,9 @@ class FormService
         ];
     }
 
+    /**
+    * @param String $value é o valor do campo password que será usado para validar se há ao menos uma letra e um número 
+    */
     private function verifyPasswordNumbersAndLetters(String $value): bool
     {
         preg_match_all(
@@ -54,14 +61,17 @@ class FormService
         preg_match_all(
             '/[a-zA-Z]/',
             $value,$matchesLetters);
+        $return = false
         if (count($matchesNumbers[0]) == 0 || count($matchesLetters[0]) == 0) {
-            return true;
+            $return = true;
         }
-        return false;
+        //retorna o resultado da verificação, referente a existência de ao menos um número e uma letra na senha
+        return $return;
     }
 
     public function getFormValidationsMessages(): array
     {
+        //retorna o array necessário para as mensagens referentes as validações
         return [
             'name.required'     => 'O campo "Nome completo" deve ser preenchido!',
             'name.max'          => 'O campo "Nome completo" deve ter no máximo 255 caracteres!',
@@ -81,6 +91,9 @@ class FormService
         ];
     }
 
+    /**
+    * @param array $data é o valores vindos do form de usuários
+    */
     public function storeUser(array $data): int
     {
         $informacao = [
@@ -91,12 +104,16 @@ class FormService
             'email'    => $data['email']
         ];
         try{
+            //Retorna o id do usuário persistido no banco de dados
             return $this->formRepository->insert(User::getTableName(),$informacao);
         } catch(Exception $e){
             throw $e;
         }
     }
     
+    /**
+    * @param array $data é o valores vindos do form de busca de usuários
+    */
     public function list(array $data): array
     {
         if($data){
@@ -107,6 +124,7 @@ class FormService
                 'email'    => $data['email']
             ];
         }
+        //retorna o resultado da consulta por usuários 
         return $this->formRepository->select(User::getTableName(),User::mountInformation($data));
         
     }
