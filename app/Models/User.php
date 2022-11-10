@@ -55,7 +55,6 @@ class User extends Authenticatable
     */
     public static function mountInformation(?array $data = null): array
     {
-        $fields = implode(',',$data);
         $bind = [];
         $fields = " id,
                     name,
