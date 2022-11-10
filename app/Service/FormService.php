@@ -61,7 +61,7 @@ class FormService
         preg_match_all(
             '/[a-zA-Z]/',
             $value,$matchesLetters);
-        $return = false
+        $return = false;
         if (count($matchesNumbers[0]) == 0 || count($matchesLetters[0]) == 0) {
             $return = true;
         }
@@ -111,9 +111,7 @@ class FormService
         }
     }
     
-    /**
-    * @param array $data é o valores vindos do form de busca de usuários
-    */
+   
     public function list(array $data): array
     {
         if($data){

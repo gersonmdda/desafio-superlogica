@@ -22,7 +22,6 @@
     <body>
         <h2>Busca</h2>
         <form action="{{url('/form/list')}}" method="get">
-            @csrf
             <div>
                 <label for="name">Nome completo:</label>
                 <input type="text" id="name" name="name">

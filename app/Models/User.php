@@ -63,13 +63,14 @@ class User extends Authenticatable
                     user_name,
                     email ";
         if($data){
-            $conditions = " WHERE ";
             $and = false;
             $bind= [];
             foreach($data as $key => $condition){
                 if($condition){
                     if($and){
                         $conditions .= "AND ";
+                    } else {
+                        $conditions = " WHERE ";
                     }
                     $conditions .= $key.' LIKE :'.$key.' ';
                     $and = true;
