@@ -1,0 +1,31 @@
+##EXECUTAR PROJETO
+$./vendor/bin/sail up
+
+## Entrar na imagem do projeto
+
+Executar o comando 
+
+$ docker ps
+
+Verificar a imagem com o nome api-git/laravel-app
+
+Copiar o CONTAINER ID
+
+rodar o comando 
+
+$ docker exec -it <container id> bash
+
+Exemplo:
+CONTAINER ID   IMAGE                         COMMAND                  CREATED         STATUS                   PORTS                                                                                    NAMES
+ffcd7247c5c6   sail-8.1/app                  "start-container"        5 minutes ago   Up 5 minutes             0.0.0.0:80->80/tcp, :::80->80/tcp, 0.0.0.0:5173->5173/tcp, :::5173->5173/tcp, 8000/tcp   desafio-superlogica_laravel.test_1
+
+
+$ docker exec -it ffcd7247c5c6 bash
+
+dentro do bash rodar comando:
+
+# php artisan migrate
+
+acesso em: http://0.0.0.0:80
+
+
