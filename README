@@ -1,4 +1,5 @@
 ##EXECUTAR PROJETO
+copiar o arquivo .env.example e renomear para apenas .env
 $./vendor/bin/sail up
 
 ## Entrar na imagem do projeto
@@ -22,9 +23,12 @@ ffcd7247c5c6   sail-8.1/app                  "start-container"        5 minutes 
 
 $ docker exec -it ffcd7247c5c6 bash
 
+alterar dentro do env DB_HOST=mysql e DB_PASSWORD=password
 dentro do bash rodar comando:
 
 # php artisan migrate
+#php artisan key:generate
+
 
 acesso em: http://0.0.0.0:80
 

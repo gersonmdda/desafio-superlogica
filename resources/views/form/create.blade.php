@@ -32,7 +32,7 @@
     <div>
         <label for="password">Senha (8 caracteres mínimo, contendo pelo menos 1 letra
         e 1 número):</label>
-        <input type="text" id="password" name="password">
+        <input type="password" id="password" name="password">
     </div>
     <input type="submit" value="Cadastrar">
 </form>
