@@ -21,3 +21,4 @@ Route::get('/', function () {
 Route::get('/form',[App\Http\Controllers\FormController::class, 'create']);
 Route::post('/form',[App\Http\Controllers\FormController::class, 'store']);
 Route::get('/form/list',[App\Http\Controllers\FormController::class, 'list']);
+Route::get('/challenge-two',[App\Http\Controllers\ChallengeTwoController::class, 'processing']);

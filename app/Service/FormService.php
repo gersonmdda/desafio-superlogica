@@ -3,10 +3,7 @@
 namespace App\Service;
 
 
-use \Exception;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
 use App\Repository\FormRepository;
 use App\Models\User;
 
@@ -50,12 +47,9 @@ class FormService
             'password' => Hash::make($data['password']),
             'email'    => $data['email']
         ];
-        try{
-            //Retorna o id do usuário persistido no banco de dados
-            return $this->formRepository->insert(User::getTableName(),$informacao);
-        } catch(Exception $e){
-            throw $e;
-        }
+        //Retorna o id do usuário persistido no banco de dados
+        return $this->formRepository->insert(User::getTableName(),$informacao);
+        
     }
     
    /**
