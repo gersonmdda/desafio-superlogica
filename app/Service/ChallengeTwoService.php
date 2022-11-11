@@ -31,7 +31,10 @@ class ChallengeTwoService
        dd($reversed);
     }
 
-    public function removePrevious(array $newArray, $count = 0)
+    /**
+    *@paramarray $newArray é a listagem de números que serão enviados para eliminar os números que são menores que os antecessores 
+    */
+    public function removePrevious(array $newArray)
     {
         $removed = false;
         $previus = null;
@@ -46,6 +49,7 @@ class ChallengeTwoService
         if($removed){
             $newArray = $this->removePrevious($newArray);
         }
+        // retorna o array tratado, com os números menores que os antecessores eliminados
         return $newArray;
     }
 

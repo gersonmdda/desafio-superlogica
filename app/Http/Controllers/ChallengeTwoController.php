@@ -13,6 +13,9 @@ class ChallengeTwoController extends BaseController
 
     private ChallengeTwoService $challengeTwoService;
 
+    /**
+    * @param ChallengeTwoService $challengeTwoService objeto da classe que dará acesso as operações de regras de negócio
+    */
     function __construct(ChallengeTwoService $challengeTwoService) 
     {
         $this->challengeTwoService = $challengeTwoService;
